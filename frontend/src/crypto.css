@@ -1,0 +1,756 @@
+:root {
+  --bg-dark: #07111f;
+  --bg-mid: #0f172a;
+  --bg-light: #172554;
+
+  --glass: rgba(255, 255, 255, 0.075);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.16);
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-soft: #cbd5e1;
+
+  --accent: #60a5fa;
+  --accent-strong: #3b82f6;
+  --accent-glow: rgba(96, 165, 250, 0.35);
+
+  --success: #34d399;
+  --success-bg: rgba(52, 211, 153, 0.12);
+
+  --danger: #fb7185;
+  --danger-bg: rgba(251, 113, 133, 0.12);
+
+  --radius-xl: 30px;
+  --radius-lg: 24px;
+  --radius-md: 14px;
+
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.38);
+  --shadow-glow: 0 0 55px rgba(96, 165, 250, 0.16);
+
+  --font-main: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+.cryptoPage {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  padding: 36px 18px 42px;
+
+  background:
+    radial-gradient(circle at 14% 10%, rgba(96, 165, 250, 0.23), transparent 31%),
+    radial-gradient(circle at 84% 16%, rgba(59, 130, 246, 0.15), transparent 28%),
+    radial-gradient(circle at 82% 88%, rgba(37, 99, 235, 0.18), transparent 35%),
+    linear-gradient(180deg, var(--bg-dark), var(--bg-mid) 54%, #020617);
+}
+
+.cryptoBg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), transparent 86%);
+}
+
+.cryptoPage::before {
+  content: "";
+  position: fixed;
+  width: 580px;
+  height: 580px;
+  top: -220px;
+  right: -180px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.11);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cryptoHero,
+.cryptoShell,
+.favsPanel {
+  position: relative;
+  z-index: 1;
+  width: min(1220px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cryptoHero {
+  margin-bottom: 22px;
+  padding: 26px;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 22px;
+
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.04)),
+    rgba(15, 23, 42, 0.52);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.cryptoEyebrow,
+.favsEyebrow {
+  width: fit-content;
+  margin: 0 0 14px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.22);
+
+  color: #bfdbfe;
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.cryptoHero h1 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: clamp(2.5rem, 7vw, 5.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  font-weight: 950;
+}
+
+.cryptoSubtitle {
+  max-width: 660px;
+  margin: 18px 0 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.cryptoHeroCard {
+  min-width: 220px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.2), transparent 44%),
+    rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heroCardLabel,
+.heroCardText {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.cryptoHeroCard strong {
+  margin: 18px 0;
+  color: var(--text-main);
+  font-size: 3.8rem;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+.cryptoShell {
+  padding: 26px;
+
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045)),
+    var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft), var(--shadow-glow);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.cryptoShell::before,
+.favsPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.42),
+    transparent 32%,
+    rgba(255, 255, 255, 0.1)
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.cryptoShellHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.cryptoShellHeader h2 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: -0.05em;
+  font-weight: 900;
+}
+
+.cryptoShellHeader p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.cryptoStatus {
+  height: 38px;
+  padding: 0 13px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+
+  color: #bbf7d0;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--success);
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.8);
+}
+
+.cryptoTable {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.cryptoTable::-webkit-scrollbar {
+  height: 10px;
+}
+
+.cryptoTable::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.62);
+  border-radius: 999px;
+}
+
+.cryptoTable::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.45);
+  border-radius: 999px;
+}
+
+.coinTableHead,
+.coinRow {
+  min-width: 1060px;
+  display: grid;
+  grid-template-columns: 74px 230px 140px 120px 220px 135px 135px 74px;
+  align-items: center;
+  gap: 12px;
+}
+
+.coinTableHead {
+  padding: 0 16px 10px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.coinRow {
+  min-height: 92px;
+  margin-bottom: 12px;
+  padding: 13px 16px;
+
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.04)),
+    rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.coinRow:hover {
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.35);
+  background:
+    linear-gradient(180deg, rgba(96, 165, 250, 0.115), rgba(255, 255, 255, 0.04)),
+    rgba(15, 23, 42, 0.74);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.3),
+    0 0 34px rgba(96, 165, 250, 0.1);
+}
+
+.coinCell {
+  min-width: 0;
+}
+
+.coinMuted {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.coinIdentity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coinLogo {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  box-shadow: 0 0 22px rgba(96, 165, 250, 0.16);
+}
+
+.coinNameWrap {
+  min-width: 0;
+}
+
+.coinName {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coinTicker {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.coinValue {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-weight: 850;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coinChange {
+  width: fit-content;
+  min-width: 86px;
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.coinChange .coinValue {
+  font-size: 0.84rem;
+}
+
+.isUp {
+  background: var(--success-bg);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  color: #bbf7d0;
+}
+
+.isUp .coinValue,
+.favChange.isUp {
+  color: #bbf7d0;
+}
+
+.isDown {
+  background: var(--danger-bg);
+  border: 1px solid rgba(251, 113, 133, 0.22);
+}
+
+.isDown .coinValue,
+.favChange.isDown {
+  color: #fecdd3;
+}
+
+.sparkWrap {
+  width: 100%;
+  height: 82px;
+  padding: 4px;
+
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.74), rgba(15, 23, 42, 0.52)),
+    rgba(2, 6, 23, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  overflow: hidden;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 82px;
+}
+
+.coinBookmark {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bookmarkBtn {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  display: grid;
+  place-items: center;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.bookmarkBtn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+}
+
+.bookmarkBtn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: rgba(96, 165, 250, 0.16);
+  border-color: rgba(96, 165, 250, 0.34);
+  box-shadow: 0 0 24px rgba(96, 165, 250, 0.16);
+}
+
+.bookmarkBtn:hover img,
+.bookmarkBtn.isSaved img {
+  opacity: 1;
+}
+
+.bookmarkBtn.isSaved {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.42);
+}
+
+.cryptoEmpty {
+  min-width: 100%;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.46);
+  border: 1px dashed rgba(148, 163, 184, 0.28);
+
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  font-weight: 750;
+}
+
+.favsPanel {
+  margin-top: 22px;
+  padding: 26px;
+
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.04)),
+    var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft), var(--shadow-glow);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.favsHeader {
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.favsTitle {
+  margin: 0;
+  color: var(--text-main);
+  font-size: clamp(1.5rem, 4vw, 2.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  font-weight: 950;
+}
+
+.favsSub {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.favsEmpty {
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.46);
+  border: 1px dashed rgba(148, 163, 184, 0.28);
+
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  font-weight: 750;
+}
+
+.favsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.favCard {
+  min-height: 245px;
+  padding: 18px;
+
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top right, rgba(96, 165, 250, 0.14), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.04)),
+    rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.favCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.3),
+    0 0 34px rgba(96, 165, 250, 0.1);
+}
+
+.favTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.favId {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.favLogo {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+}
+
+.favName {
+  color: var(--text-main);
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favTicker {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.favChange {
+  width: fit-content;
+  flex: 0 0 auto;
+  padding: 7px 9px;
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.favMainValue {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.favMainValue span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.favMainValue strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-main);
+  font-size: 1.55rem;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 950;
+}
+
+.favStats {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+.favStat {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.favLabel {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.favValue {
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-align: right;
+}
+
+@media (max-width: 1100px) {
+  .favsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .cryptoHero {
+    flex-direction: column;
+  }
+
+  .cryptoHeroCard {
+    min-width: 0;
+  }
+
+  .favsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .favsHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .cryptoPage {
+    padding: 22px 14px 34px;
+  }
+
+  .cryptoHero,
+  .cryptoShell,
+  .favsPanel {
+    border-radius: 24px;
+    padding: 20px;
+  }
+
+  .cryptoHero h1 {
+    font-size: 3rem;
+  }
+
+  .cryptoSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .cryptoShellHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .coinTableHead,
+  .coinRow {
+    min-width: 980px;
+    grid-template-columns: 64px 210px 125px 112px 200px 125px 125px 64px;
+  }
+
+  .favsGrid {
+    grid-template-columns: 1fr;
+  }
+}

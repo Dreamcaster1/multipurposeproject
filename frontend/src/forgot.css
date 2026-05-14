@@ -1,0 +1,85 @@
+:root {
+  --bg: #0f172a;
+  --glass: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+  --highlight: #60a5fa;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --radius: 16px;
+  --font: Inter, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(180deg, #0a1125, #0f172a 60%);
+}
+
+.forgot-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forgot-card {
+  width: 340px;
+  padding: 40px;
+  border-radius: var(--card-radius);
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.forgot-card h1 {
+  color: var(--text);
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+}
+
+.forgot-card p {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.forgot-card input {
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.forgot-card input::placeholder {
+  color: var(--muted);
+}
+
+.forgot-card input:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.06);
+  box-shadow: var(--focus);
+}
+
+.forgot-card button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #4f8fe8);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  box-shadow: 0 8px 24px rgba(96,165,250,0.12);
+}
+
+.forgot-card button:hover{ transform: translateY(-1px); box-shadow: 0 12px 36px rgba(96,165,250,0.14); }
+.forgot-card button:active{ transform: scale(0.99); }

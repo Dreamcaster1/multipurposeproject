@@ -1,0 +1,74 @@
+:root {
+  --bg: #0f172a;
+  --glass: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+  --highlight: #60a5fa;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --radius: 16px;
+  --font: Inter, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(180deg, #0a1125, #0f172a 60%);
+}
+
+/* Centering */
+.nv-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.nv-card {
+  width: 340px;
+  padding: 36px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Title */
+.nv-card h1 {
+  color: var(--text);
+  font-size: 22px;
+  margin: 0;
+}
+
+/* Subtext */
+.nv-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Button */
+.nv-card button {
+  padding: 12px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--highlight);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nv-card button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.nv-card button:active {
+  transform: translateY(0);
+}

@@ -23,7 +23,7 @@ function Newsview() {
       try {
         setLoading(true);
 
-        let backres = await fetch("http://localhost:5000/sendinterests", {
+        let backres = await fetch("multipurposeproject-yhxq.vercel.app/sendinterests", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

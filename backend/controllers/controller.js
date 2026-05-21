@@ -22,7 +22,7 @@ class Servercontroller {
     else {
     let hesh = await this.usermodel.getusertokenhesh(email);
     await this.usermodel.changelinkstatusafteruse(hesh);
-    const resetLink = `http://localhost:5000/resetpassword?token=${hesh}`; // lead the user to a page where they enter the new password
+    const resetLink = `https://multipurposeproject.onrender.com/resetpassword?token=${hesh}`; // lead the user to a page where they enter the new password
     async function sendEmail(email, subject, text) {
      const body = {
     sender: {
@@ -59,7 +59,7 @@ class Servercontroller {
 }
 forgotpasswordverify(req, res) {
   const token = req.query.token;
-  res.redirect(`http://localhost:3000/resetpassword?token=${token}`);
+  res.redirect(`https://multipurposeproject.onrender.com/resetpassword?token=${token}`);
 }
 async changepassword(req, res) {
   const token = req.body.token;
@@ -83,7 +83,7 @@ async changepassword(req, res) {
       return { token, hesh };
     }
     let generatedToken = generateToken().hesh;
-    const verifylink = `http://localhost:5000/verifyemail?token=${generatedToken}`;
+    const verifylink = `https://multipurposeproject.onrender.com/verifyemail?token=${generatedToken}`;
     let email = req.body.nameforreg
     let password = crypto.createHash("sha256").update(req.body.passwordforreg).digest("hex");
     let city = req.body.cityforreg
@@ -137,7 +137,7 @@ await sendEmail(
 verifyemail(req, res) {
   this.usermodel.updateverified(req.query.token);
   console.log("Received token:", req.query);
-  res.redirect("http://localhost:3000/verifiedemail");
+  res.redirect("https://multipurposeproject.onrender.com/verifiedemail");
 }
 
   async login(req, res) {

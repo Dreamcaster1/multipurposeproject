@@ -19,7 +19,7 @@ function ChangePasswordPage() {
     useEffect(() => {
     async function checkLink() {
        
-        let res = await fetch("http://localhost:5000/fetchlinkstatus", {
+        let res = await fetch("https://multipurposeproject-yhxq.vercel.app/fetchlinkstatus", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -28,7 +28,7 @@ function ChangePasswordPage() {
         })
         let jsonres = await res.json();
         setLinkValid(jsonres.isValid);
-         await fetch("http://localhost:5000/changeLinkStatus", {
+         await fetch("https://multipurposeproject-yhxq.vercel.app/changeLinkStatus", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -59,7 +59,7 @@ function ChangePasswordPage() {
         setLoading(true);
 
         try {
-            let response = await fetch("http://localhost:5000/changepassword", {
+            let response = await fetch("https://multipurposeproject-yhxq.vercel.app/changepassword", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

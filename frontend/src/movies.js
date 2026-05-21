@@ -90,14 +90,14 @@ function Movies() {
     });
 
     try {
-      await fetch("http://localhost:5000/addfavmovie", {
+      await fetch("multipurposeproject-yhxq.vercel.app/addfavmovie", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ allfavmoviedata: obj }),
       });
 
-      let sessionget = await fetch("http://localhost:5000/receivefavmovie", {
+      let sessionget = await fetch("multipurposeproject-yhxq.vercel.app/receivefavmovie", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -150,7 +150,7 @@ function Movies() {
   useEffect(() => {
     async function setvariable() {
       try {
-        await fetch("http://localhost:5000/zerothevalues", {
+        await fetch("multipurposeproject-yhxq.vercel.app/zerothevalues", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -162,7 +162,7 @@ function Movies() {
 
     async function getdataback() {
       try {
-        let sessionget = await fetch("http://localhost:5000/receivefavmovie", {
+        let sessionget = await fetch("multipurposeproject-yhxq.vercel.app/receivefavmovie", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -225,7 +225,7 @@ function Movies() {
     changeclicked(movieTitle);
 
     try {
-      await fetch("http://localhost:5000/removefavmovie", {
+      await fetch("multipurposeproject-yhxq.vercel.app/removefavmovie", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

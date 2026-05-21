@@ -12,7 +12,7 @@ function Registration() {
   const [errors, setErrors] = useState({});
 
   async function sendtologin() {
-    let sessionResponse = await fetch("http://localhost:5000/checksession", {
+    let sessionResponse = await fetch("multipurposeproject-yhxq.vercel.app/checksession", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
@@ -96,7 +96,7 @@ function Registration() {
     }
 
     try {
-      let emailCheckResponse = await fetch("http://localhost:5000/checkemail", {
+      let emailCheckResponse = await fetch("multipurposeproject-yhxq.vercel.app/checkemail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ emailforcheck: nameinput }),
@@ -109,7 +109,7 @@ function Registration() {
         return;
       }
 
-      let registrationResponse = await fetch("http://localhost:5000/registration", {
+      let registrationResponse = await fetch("multipurposeproject-yhxq.vercel.app/registration", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

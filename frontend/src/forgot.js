@@ -18,7 +18,7 @@ function Forgot() {
         setLoading(true);
 
         try {
-            await fetch("http://localhost:5000/forgotpassword", {
+            await fetch("multipurposeproject-yhxq.vercel.app/forgotpassword", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

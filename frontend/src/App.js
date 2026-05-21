@@ -21,7 +21,7 @@ function App() {
 
   async function checksession() {
     try {
-      const response = await fetch("http://localhost:5000/checksession", {
+      const response = await fetch("multipurposeproject-yhxq.vercel.app/checksession", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

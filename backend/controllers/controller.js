@@ -146,7 +146,7 @@ await sendEmail(
 verifyemail(req, res) {
   this.usermodel.updateverified(req.query.token);
   console.log("Received token:", req.query);
-  res.redirect("https://multipurposeproject.onrender.com/verifiedemail");
+  res.redirect("https://multipurposeproject-yhxq.vercel.app/verifiedemail");
 }
 
   async login(req, res) {

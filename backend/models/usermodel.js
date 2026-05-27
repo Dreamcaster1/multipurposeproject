@@ -1,7 +1,7 @@
 const pool = require("../database")
 class UserModel {
     constructor() {
-        this.pool = pool.promise()
+        this.pool = pool
     }
     async checkemail(email) {
         let [rows] = await this.pool.query("SELECT * FROM users WHERE email = ?", [email])

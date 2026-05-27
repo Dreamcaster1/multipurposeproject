@@ -9,8 +9,11 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "https://multipurposeproject.onrender.com",
-    credentials: true,
+     origin: [
+    "https://multipurposeproject.vercel.app",
+    "https://multipurposeproject-yhxq-git-main-dreamcaster1s-projects.vercel.app"
+  ],
+  credentials: true
   })
 );
 app.use(

@@ -96,7 +96,7 @@ function Registration() {
     }
 
     try {
-      let emailCheckResponse = await fetch("multipurposeproject-yhxq.vercel.app/checkemail", {
+      let emailCheckResponse = await fetch("https://multipurposeproject.onrender.com/checkemail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ emailforcheck: nameinput }),

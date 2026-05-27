@@ -67,9 +67,14 @@ async changepassword(req, res) {
   res.send("Password changed successfully");
 }
   async checkemail(req, res) {
-    let email = req.body.emailforcheck;
-    let result = await this.usermodel.checkifexists(email);
-    res.json(result);
+    try {
+      let email = req.body.emailforcheck;
+      let result = await this.usermodel.checkifexists(email);
+      res.json(result);
+    } catch (error) {
+      console.error("checkemail error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
   async registration(req, res) {
     if(await this.usermodel.checkifexists(req.body.nameforreg) == false) {

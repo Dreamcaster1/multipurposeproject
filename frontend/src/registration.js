@@ -102,7 +102,21 @@ function Registration() {
         body: JSON.stringify({ emailforcheck: nameinput }),
       });
 
-      let emailExists = await emailCheckResponse.json();
+      if (!emailCheckResponse.ok) {
+        const text = await emailCheckResponse.text().catch(() => "");
+        console.error("/checkemail failed:", emailCheckResponse.status, text);
+        showToast("Server error, try again", "error");
+        return;
+      }
+
+      let emailExists;
+      try {
+        emailExists = await emailCheckResponse.json();
+      } catch (err) {
+        console.error("Invalid JSON from /checkemail:", err);
+        showToast("Server error, try again", "error");
+        return;
+      }
 
       if (emailExists == false) {
         showToast("Email already exists", "error");

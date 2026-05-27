@@ -29,7 +29,8 @@ const corsOptionsDelegate = function (req, callback) {
 };
 
 app.use(cors(corsOptionsDelegate));
-app.options("*", cors(corsOptionsDelegate));
+// Use a RegExp matcher for OPTIONS routes to avoid path-to-regexp parsing errors for '*'
+app.options(/.*/, cors(corsOptionsDelegate));
 app.use(
   session({
     secret: "16117811",

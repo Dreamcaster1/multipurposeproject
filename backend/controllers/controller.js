@@ -72,7 +72,11 @@ async changepassword(req, res) {
       let result = await this.usermodel.checkifexists(email);
       res.json(result);
     } catch (error) {
-      console.error("checkemail error:", error);
+      try {
+        console.error("checkemail error:", { body: req.body, stack: error && error.stack ? error.stack : error });
+      } catch (logErr) {
+        console.error("Failed to log checkemail error:", logErr);
+      }
       res.status(500).json({ error: "Internal server error" });
     }
   }

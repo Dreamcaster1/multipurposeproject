@@ -9,7 +9,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "multipurposeproject-yhxq.vercel.app",
+    origin: "https://multipurposeproject.onrender.com",
     credentials: true,
   })
 );

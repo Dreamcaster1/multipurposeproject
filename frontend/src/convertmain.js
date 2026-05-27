@@ -57,14 +57,14 @@ function Convertmain() {
     if (!selectedCurrency) return;
 
     try {
-      await fetch("multipurposeproject-yhxq.vercel.app/currencychoice", {
+      await fetch("https://multipurposeproject.onrender.com/currencychoice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ currchosen: selectedCurrency }),
       });
 
-      let sessioncurr = await fetch("multipurposeproject-yhxq.vercel.app/currencysend", {
+      let sessioncurr = await fetch("https://multipurposeproject.onrender.com/currencysend", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -90,7 +90,7 @@ function Convertmain() {
       let refreshtime = new Date().toLocaleString();
       setLastRefresh(refreshtime);
 
-      await fetch("https://multipurposeproject-yhxq.vercel.app/getrefreshtime", {
+      await fetch("https://multipurposeproject.onrender.com/getrefreshtime", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

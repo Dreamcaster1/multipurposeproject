@@ -27,7 +27,7 @@ function Login({ setSessionRes }) {
 
   async function func1() {
     try {
-      let response = await fetch("multipurposeproject-yhxq.vercel.app/login", {
+      let response = await fetch("https://multipurposeproject.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

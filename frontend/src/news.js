@@ -38,7 +38,7 @@ function News() {
     changeback({ selectedtopics: filtered });
 
     try {
-      await fetch("multipurposeproject-yhxq.vercel.app/sessioninterests", {
+      await fetch("https://multipurposeproject.onrender.com/sessioninterests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -53,7 +53,7 @@ function News() {
   useEffect(() => {
     async function getbackdata() {
       try {
-        let fetchres = await fetch("multipurposeproject-yhxq.vercel.app/sendinterests", {
+        let fetchres = await fetch("https://multipurposeproject.onrender.com/sendinterests", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

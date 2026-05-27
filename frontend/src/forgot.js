@@ -18,7 +18,7 @@ function Forgot() {
         setLoading(true);
 
         try {
-            await fetch("multipurposeproject-yhxq.vercel.app/forgotpassword", {
+            await fetch("https://multipurposeproject.onrender.com/forgotpassword", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

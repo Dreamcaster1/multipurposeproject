@@ -23,7 +23,7 @@ function Newsview() {
       try {
         setLoading(true);
 
-        let backres = await fetch("multipurposeproject-yhxq.vercel.app/sendinterests", {
+        let backres = await fetch("https://multipurposeproject.onrender.com/sendinterests", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

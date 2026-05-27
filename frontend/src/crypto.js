@@ -108,7 +108,7 @@ function Crypto() {
 
     async function fetchsavedcoins() {
       try {
-        const res2 = await fetch("multipurposeproject-yhxq.vercel.app/sendtofrontend", {
+        const res2 = await fetch("https://multipurposeproject.onrender.com/sendtofrontend", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -143,7 +143,7 @@ function Crypto() {
         (item) => item.id === selectedcoin.id
       );
 
-      const res = await fetch("https://multipurposeproject-yhxq.vercel.app/savefromfrontend", {
+      const res = await fetch("https://multipurposeproject.onrender.com/savefromfrontend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

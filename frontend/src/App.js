@@ -21,7 +21,7 @@ function App() {
 
   async function checksession() {
     try {
-      const response = await fetch("multipurposeproject-yhxq.vercel.app/checksession", {
+      const response = await fetch("https://multipurposeproject.onrender.com/checksession", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -30,7 +30,6 @@ function App() {
       const responsebool = await response.json();
       changesessionres(responsebool);
     } catch (err) {
-      console.log(err);
       changesessionres(false);
     }
   }

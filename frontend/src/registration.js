@@ -12,7 +12,7 @@ function Registration() {
   const [errors, setErrors] = useState({});
 
   async function sendtologin() {
-    let sessionResponse = await fetch("multipurposeproject-yhxq.vercel.app/checksession", {
+    let sessionResponse = await fetch("https://multipurposeproject.onrender.com/checksession", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
@@ -109,7 +109,7 @@ function Registration() {
         return;
       }
 
-      let registrationResponse = await fetch("multipurposeproject-yhxq.vercel.app/registration", {
+      let registrationResponse = await fetch("https://multipurposeproject.onrender.com/registration", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

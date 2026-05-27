@@ -17,7 +17,7 @@ function Mainweatherpage() {
   useEffect(() => {
     async function weatherdatafromback() {
       try {
-        let arrback = await fetch("multipurposeproject-yhxq.vercel.app/accesstosession", {
+        let arrback = await fetch("https://multipurposeproject.onrender.com/accesstosession", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -64,7 +64,7 @@ function Mainweatherpage() {
         weathertype: updatedweather.weather[0],
       };
 
-      let arrback = await fetch("multipurposeproject-yhxq.vercel.app/weathersession", {
+      let arrback = await fetch("https://multipurposeproject.onrender.com/weathersession", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

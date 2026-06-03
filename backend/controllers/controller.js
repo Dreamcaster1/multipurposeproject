@@ -59,7 +59,7 @@ class Servercontroller {
 }
 forgotpasswordverify(req, res) {
   const token = req.query.token;
-  res.redirect(`https://multipurposeproject.onrender.com/resetpassword?token=${token}`);
+  res.send("hi")
 }
 async changepassword(req, res) {
   const token = req.body.token;
@@ -145,8 +145,6 @@ await sendEmail(
   } 
 verifyemail(req, res) {
   this.usermodel.updateverified(req.query.token);
-  console.log("Received token:", req.query);
-  console.log("Token asdaaaaaaaaaaaaaaaaaaaaaaaaaaa:", req.query.token);
   res.redirect("https://multipurposeproject-yhxq.vercel.app/verifiedemail");
 }
 

@@ -3,6 +3,13 @@ import { NavLink, Link } from "react-router-dom";
 import "./header.css";
 
 const Header = ({ sessionres }) => {
+  function func1() {
+    fetch("https://multipurposeproject.onrender.com/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+  }
   return (
     <header className="topnav" role="banner">
       <div className="topnav-inner">
@@ -75,7 +82,7 @@ const Header = ({ sessionres }) => {
                 <span></span>
                 Logged in
               </span>
-              <button className="logout-button" aria-label="Logout">Logout</button>
+              <button onClick={() => func1()} className="logout-button" aria-label="Logout">Logout</button>
             </>
           ) : (
             <>

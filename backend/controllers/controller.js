@@ -13,6 +13,16 @@ class Servercontroller {
     const isValid = await this.usermodel.checkLinkStatus(tokenHesh);
     res.send({ isValid });
   }
+  async logout(req, res) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Logout error:", err);
+        return res.status(500).send("Logout failed");
+      }
+      res.clearCookie("connect.sid");
+      res.redirect("https://multipurposeproject-yhxq.vercel.app/");
+    });
+  }
   async forgotpassword(req, res) {
     let email = req.body.email;
     let userExists = await this.usermodel.checkifexists(email);

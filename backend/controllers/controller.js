@@ -59,7 +59,7 @@ class Servercontroller {
 }
 forgotpasswordverify(req, res) {
   const token = req.query.token;
-  res.redirect(`https://https://multipurposeproject-yhxq.vercel.app/resetpassword?token=${token}`);
+  res.redirect(`https://multipurposeproject-yhxq.vercel.app/resetpassword?token=${token}`);
 }
 async changepassword(req, res) {
   const token = req.body.token;

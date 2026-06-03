@@ -3,8 +3,8 @@ import { NavLink, Link } from "react-router-dom";
 import "./header.css";
 
 const Header = ({ sessionres }) => {
-  function func1() {
-    fetch("https://multipurposeproject.onrender.com/logout", {
+  async function func1() {
+    await fetch("https://multipurposeproject.onrender.com/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

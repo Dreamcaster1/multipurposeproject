@@ -142,10 +142,11 @@ await sendEmail(
     );
     res.send("Registration successful")
   }
-  }
+  } 
 verifyemail(req, res) {
   this.usermodel.updateverified(req.query.token);
   console.log("Received token:", req.query);
+  console.log("Token asdaaaaaaaaaaaaaaaaaaaaaaaaaaa:", req.query.token);
   res.redirect("https://multipurposeproject-yhxq.vercel.app/verifiedemail");
 }
 

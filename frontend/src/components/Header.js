@@ -9,8 +9,7 @@ const Header = ({ sessionres }) => {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
-    location.reload();
-  }
+    window.location.reload();  }
   return (
     <header className="topnav" role="banner">
       <div className="topnav-inner">

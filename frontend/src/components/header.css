@@ -126,6 +126,36 @@
   box-shadow: 0 16px 34px rgba(37, 99, 235, 0.36);
 }
 
+.logout-button {
+  height: 36px;
+  padding: 0 13px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.logout-button:hover {
+  transform: translateY(-1px);
+  background: rgba(96, 165, 250, 0.08);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.18);
+}
+
+.logout-button:focus {
+  outline: 2px solid rgba(96, 165, 250, 0.24);
+  outline-offset: 2px;
+}
+
 .session-pill {
   height: 36px;
   padding: 0 13px;
@@ -219,7 +249,8 @@
 
   .navlink,
   .authlink,
-  .session-pill {
+  .session-pill,
+  .logout-button {
     height: 34px;
     font-size: 0.78rem;
     padding: 0 11px;

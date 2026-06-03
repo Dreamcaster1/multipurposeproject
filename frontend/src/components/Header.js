@@ -70,10 +70,13 @@ const Header = ({ sessionres }) => {
 
         <div className="authlinks">
           {sessionres ? (
-            <span className="session-pill">
-              <span></span>
-              Logged in
-            </span>
+            <>
+              <span className="session-pill">
+                <span></span>
+                Logged in
+              </span>
+              <button className="logout-button" aria-label="Logout">Logout</button>
+            </>
           ) : (
             <>
               <NavLink

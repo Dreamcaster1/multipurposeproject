@@ -24,4 +24,5 @@ router.get("/resetpassword", Servercontroller.forgotpasswordverify.bind(Serverco
 router.post("/changepassword", Servercontroller.changepassword.bind(Servercontroller));
 router.post("/changeLinkStatus", Servercontroller.changeLinkStatus.bind(Servercontroller));
 router.post("/fetchlinkstatus", Servercontroller.fetchlinkstatus.bind(Servercontroller));
+router.post("/logout", Servercontroller.logout.bind(Servercontroller));
 module.exports = router;

@@ -277,7 +277,97 @@ verifyemail(req, res) {
   sendtofrontend(req, res) {
     res.json(req.session.savecoins || []);
   }
+async getCurrentsNews(req, res) {
+  try {
+    const topics = Array.isArray(req.body.topics) ? req.body.topics : [];
 
+    if (topics.length === 0) {
+      return res.status(200).json({ articles: [] });
+    }
+
+    if (!process.env.NEWS_API_KEY) {
+      return res.status(500).json({
+        message: "Currents API key is missing",
+      });
+    }
+
+    const categoryMap = {
+      Business: "economy_business_finance",
+      Entertainment: "arts_culture_entertainment",
+      General: "general",
+      Health: "health",
+      Science: "science_technology",
+      Sports: "sport",
+      Technology: "science_technology",
+    };
+
+    const currentsCategories = topics
+      .map((topic) => categoryMap[topic])
+      .filter(Boolean);
+
+    const uniqueCategories = [...new Set(currentsCategories)];
+
+    const requests = uniqueCategories.map(async (category) => {
+      const params = new URLSearchParams({
+        category: category,
+        language: "en",
+        page_size: "10",
+        apiKey: process.env.NEWS_API_KEY,
+      });
+
+      const response = await fetch(
+        `https://api.currentsapi.services/v2/latest-news?${params.toString()}`
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("Currents API error:", data);
+        return [];
+      }
+
+      return Array.isArray(data.news) ? data.news : [];
+    });
+
+    const results = await Promise.all(requests);
+
+    const articles = results
+      .flat()
+      .filter((article) => article && article.title && article.url)
+      .map((article) => {
+        return {
+          title: article.title,
+          description: article.description,
+          url: article.url,
+          urlToImage: article.image,
+          publishedAt: article.published,
+          author: article.author,
+          source: {
+            name: article.source || "Unknown Source",
+          },
+        };
+      });
+
+    const seenUrls = new Set();
+
+    const uniqueArticles = articles.filter((article) => {
+      if (seenUrls.has(article.url)) {
+        return false;
+      }
+
+      seenUrls.add(article.url);
+      return true;
+    });
+
+    res.status(200).json({ articles: uniqueArticles });
+  } catch (err) {
+    console.error("getCurrentsNews error:", err);
+
+    res.status(500).json({
+      message: "Failed to fetch Currents news",
+    });
+  }
+}
   sessioninterests(req, res) {
     req.session.sessioninterests = req.body;
     res.send("saved");

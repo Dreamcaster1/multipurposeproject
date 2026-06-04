@@ -25,4 +25,7 @@ router.post("/changepassword", Servercontroller.changepassword.bind(Servercontro
 router.post("/changeLinkStatus", Servercontroller.changeLinkStatus.bind(Servercontroller));
 router.post("/fetchlinkstatus", Servercontroller.fetchlinkstatus.bind(Servercontroller));
 router.post("/logout", Servercontroller.logout.bind(Servercontroller));
-module.exports = router;
+router.post(
+  "/api/currents-news",
+  controller.getCurrentsNews.bind(controller)
+);module.exports = router;

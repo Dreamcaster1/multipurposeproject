@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import "./newsview.css";
 
 function Newsview() {
-  const API_KEY_NEWS = process.env.REACT_APP_API_KEY_NEWS;
-
   const [apiresult, changeapires] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedtopics, setSelectedtopics] = useState([]);
+  const [error, setError] = useState("");
 
   async function safeJson(response) {
     const text = await response.text();
@@ -22,14 +21,17 @@ function Newsview() {
     async function getnews() {
       try {
         setLoading(true);
+        setError("");
 
-        let backres = await fetch("https://multipurposeproject.onrender.com/sendinterests", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        });
+        const backres = await fetch(
+          "https://multipurposeproject.onrender.com/sendinterests",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
-        let selectedtopicsres = await safeJson(backres);
+        const selectedtopicsres = await safeJson(backres);
 
         const topics = Array.isArray(selectedtopicsres?.selectedtopics)
           ? selectedtopicsres.selectedtopics
@@ -43,25 +45,34 @@ function Newsview() {
           return;
         }
 
-        let res = topics.map(async (item) => {
-          let fetchapi = await fetch(
-            `https://newsapi.org/v2/top-headlines?country=us&category=${item.toLowerCase()}&apiKey=${API_KEY_NEWS}`
-          );
+        const newsres = await fetch(
+          "https://multipurposeproject.onrender.com/api/currents-news",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ topics }),
+          }
+        );
 
-          let json = await safeJson(fetchapi);
+        const newsjson = await safeJson(newsres);
 
-          return json?.articles || [];
-        });
+        if (!newsres.ok) {
+          throw new Error(newsjson?.message || "Failed to fetch news");
+        }
 
-        let apiresponse = await Promise.all(res);
+        const articles = Array.isArray(newsjson?.articles)
+          ? newsjson.articles
+          : [];
 
-        const flattenedArticles = apiresponse
-          .flat()
-          .filter((article) => article && article.title && article.url);
+        const cleanedArticles = articles.filter(
+          (article) => article && article.title && article.url
+        );
 
-        changeapires(flattenedArticles);
+        changeapires(cleanedArticles);
       } catch (err) {
         console.log(err);
+        setError("Could not load news right now.");
         changeapires([]);
       } finally {
         setLoading(false);
@@ -69,7 +80,7 @@ function Newsview() {
     }
 
     getnews();
-  }, [API_KEY_NEWS]);
+  }, []);
 
   return (
     <div className="news-page">
@@ -98,7 +109,14 @@ function Newsview() {
         </div>
       )}
 
-      {!loading && (
+      {!loading && error && (
+        <div className="news-empty">
+          <p>{error}</p>
+          <span>Check your backend logs or Currents API key.</span>
+        </div>
+      )}
+
+      {!loading && !error && (
         <div className="news-grid">
           {Array.isArray(apiresult) && apiresult.length > 0 ? (
             apiresult.map((item, index) => {
@@ -162,7 +180,7 @@ function Newsview() {
             <div className="news-empty">
               <p>No news found.</p>
               <span>
-                Choose at least one topic, or check the News API response.
+                Choose at least one topic, or check the Currents API response.
               </span>
             </div>
           )}

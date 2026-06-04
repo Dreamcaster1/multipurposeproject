@@ -38,12 +38,19 @@ function News() {
     changeback({ selectedtopics: filtered });
 
     try {
-      await fetch("https://multipurposeproject.onrender.com/sessioninterests", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ selectedtopics: filtered }),
-      });
+      const res = await fetch(
+        "https://multipurposeproject.onrender.com/sessioninterests",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ selectedtopics: filtered }),
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to save interests");
+      }
     } catch (err) {
       console.log(err);
       setToast("Could not save your interests.");
@@ -53,13 +60,15 @@ function News() {
   useEffect(() => {
     async function getbackdata() {
       try {
-        let fetchres = await fetch("https://multipurposeproject.onrender.com/sendinterests", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        });
+        const fetchres = await fetch(
+          "https://multipurposeproject.onrender.com/sendinterests",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
-        let jsonres = await safeJson(fetchres);
+        const jsonres = await safeJson(fetchres);
 
         if (jsonres && Array.isArray(jsonres.selectedtopics)) {
           changeback(jsonres);

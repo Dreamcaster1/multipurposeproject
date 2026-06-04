@@ -6,14 +6,22 @@ import "./header.css";
 const Header = ({ sessionres }) => {
   const navigate = useNavigate();
 
-  async function func1() {
-    await fetch("https://multipurposeproject.onrender.com/logout", {
+ async function func1() {
+  try {
+    const res = await fetch("https://multipurposeproject.onrender.com/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    })
+    });
+
+    console.log("logout response:", res.status);
+
+    navigate("/");
+  } catch (err) {
+    console.error("logout failed:", err);
     navigate("/");
   }
+}
   return (
     <header className="topnav" role="banner">
       <div className="topnav-inner">

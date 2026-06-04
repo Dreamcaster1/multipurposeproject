@@ -3,14 +3,15 @@ import { NavLink, Link } from "react-router-dom";
 import "./header.css";
 
 const Header = ({ sessionres }) => {
+  const navigate = useNavigate();
+
   async function func1() {
-    window.location.reload();  
     await fetch("https://multipurposeproject.onrender.com/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
-    window.location.reload();  
+    navigate("/");
   }
   return (
     <header className="topnav" role="banner">

@@ -15,9 +15,18 @@ if (process.env.TRUST_PROXY === "1" || process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
 
-// Allow all CORS
-app.use(cors());
-app.options(/.*/, cors());
+
+const corsOptions = {
+  origin: [
+    "https://multipurposeproject.vercel.app",
+    "https://multipurposeproject-yhxq.vercel.app",
+    "https://multipurposeproject-yhxq-git-main-dreamcaster1s-projects.vercel.app"
+  ],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 
 const isProduction = process.env.NODE_ENV === "production";
 

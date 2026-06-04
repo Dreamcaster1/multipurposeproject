@@ -15,11 +15,10 @@ const Header = ({ sessionres }) => {
     });
 
     console.log("logout response:", res.status);
-
-    navigate("/");
+    window.location.reload();
   } catch (err) {
     console.error("logout failed:", err);
-    navigate("/");
+    window.location.reload();
   }
 }
   return (

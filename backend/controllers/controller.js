@@ -20,7 +20,7 @@ class Servercontroller {
         return res.status(500).send("Logout failed");
       }
       res.clearCookie("connect.sid");
-      res.redirect("https://multipurposeproject-yhxq.vercel.app/");
+      res.send("Logged out successfully");
     });
   }
   async forgotpassword(req, res) {

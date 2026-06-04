@@ -27,5 +27,5 @@ router.post("/fetchlinkstatus", Servercontroller.fetchlinkstatus.bind(Servercont
 router.post("/logout", Servercontroller.logout.bind(Servercontroller));
 router.post(
   "/api/currents-news",
-  controller.getCurrentsNews.bind(controller)
+  Servercontroller.getCurrentsNews.bind(Servercontroller)
 );module.exports = router;

@@ -4,12 +4,14 @@ import "./header.css";
 
 const Header = ({ sessionres }) => {
   async function func1() {
+    window.location.reload();  
     await fetch("https://multipurposeproject.onrender.com/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
-    window.location.reload();  }
+    window.location.reload();  
+  }
   return (
     <header className="topnav" role="banner">
       <div className="topnav-inner">
